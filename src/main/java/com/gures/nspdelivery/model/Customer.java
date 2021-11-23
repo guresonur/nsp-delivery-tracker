@@ -13,7 +13,7 @@ public class Customer implements Serializable {
 
     private String customerName;
 
-    @OneToMany (mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Project> projects;
 

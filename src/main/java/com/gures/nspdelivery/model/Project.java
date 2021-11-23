@@ -1,7 +1,9 @@
 package com.gures.nspdelivery.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,7 +17,7 @@ public class Project {
 
     private String projectDescription;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn (name = "customer_id", nullable = false)
     @JsonBackReference
     private Customer customer;
