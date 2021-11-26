@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
 
-    @Query(value = "select customer_id from customer where customer_id in (select customer_id from project where project_id = :project_id)", nativeQuery = true)
+
 
     int findCustomerIdByProjectId(int project_id);
 

@@ -1,8 +1,7 @@
 package com.gures.nspdelivery.controller;
 
 import com.gures.nspdelivery.model.Customer;
-import com.gures.nspdelivery.repository.CustomerRepository;
-import com.gures.nspdelivery.repository.ProjectRepository;
+import com.gures.nspdelivery.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,20 +12,16 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    private CustomerRepository customerRepository;
-
-    @Autowired
-    private ProjectRepository projectRepository;
+    private CustomerService customerService;
 
     @GetMapping(value = "/customerList", produces = "application/json")
     public List<Customer> getCustomers() {
-        return customerRepository.findAll();
+        return customerService.findAllCustomers();
     }
 
     @PostMapping(value = "/addCustomer", produces = "application/json", consumes = "application/json")
     public Customer addCustomer(@RequestBody Customer customer) {
-        return customerRepository.save(customer);
+        return customerService.addCustomer(customer);
     }
-
 
 }

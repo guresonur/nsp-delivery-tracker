@@ -1,5 +1,6 @@
 package com.gures.nspdelivery.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -16,6 +17,11 @@ public class Customer implements Serializable {
     @OneToMany (mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Project> projects;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id")
+    @JsonBackReference
+    private Country country;
 
     public Customer() {
     }
