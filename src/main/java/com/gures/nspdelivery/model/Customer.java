@@ -12,6 +12,7 @@ public class Customer implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
 
+    @Column(unique = true)
     private String customerName;
 
     @OneToMany (mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

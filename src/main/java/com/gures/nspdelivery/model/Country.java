@@ -1,5 +1,6 @@
 package com.gures.nspdelivery.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -10,19 +11,26 @@ public class Country {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private String countryName;
 
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "country")
     private List<Customer> customers;
 
+    @JsonBackReference
+    @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn (name = "region_id")
+    private Region region;
+
     public Country() {
     }
 
-    public Country(int id, String countryName, List<Customer> customers) {
+    public Country(int id, String countryName, List<Customer> customers, Region region) {
         this.id = id;
         this.countryName = countryName;
         this.customers = customers;
+        this.region = region;
     }
 
     public int getId() {
@@ -47,5 +55,13 @@ public class Country {
 
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
 }

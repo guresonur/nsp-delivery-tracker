@@ -22,8 +22,8 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    public Optional<Customer> getCustomerById(int id) {
-        return customerRepository.findById(id);
+    public Customer getCustomerById(int id) {
+        return customerRepository.findById(id).orElse(null);
     }
 
     public void removeCustomerById(int id) {

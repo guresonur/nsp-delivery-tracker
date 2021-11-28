@@ -18,7 +18,7 @@ public class Project {
     private String projectDescription;
 
     @ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn (name = "customer_id", nullable = false)
+    @JoinColumn (name = "customer_id")
     @JsonBackReference
     private Customer customer;
 

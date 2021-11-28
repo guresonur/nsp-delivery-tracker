@@ -19,7 +19,7 @@ public class Server implements Serializable {
 
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name = "project_id", nullable = false)
+    @JoinColumn (name = "project_id")
     private Project project;
 
     public Server() {

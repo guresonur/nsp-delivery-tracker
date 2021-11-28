@@ -21,8 +21,8 @@ public class ServerService {
         return serverRepository.findAll();
     }
 
-    public Optional<Server> getServerById(int id) {
-        return serverRepository.findById(id);
+    public Server getServerById(int id) {
+        return serverRepository.findById(id).orElse(null);
     }
 
     public void removeServerById(int id) {

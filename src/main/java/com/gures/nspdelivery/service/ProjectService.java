@@ -22,8 +22,8 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
-    public Optional<Project> getProjectById(int id) {
-        return projectRepository.findById(id);
+    public Project getProjectById(int id) {
+        return projectRepository.findById(id).orElse(null);
     }
 
     public void removeProjectById(int id) {
