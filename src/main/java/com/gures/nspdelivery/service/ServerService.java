@@ -1,12 +1,12 @@
 package com.gures.nspdelivery.service;
 
+import com.gures.nspdelivery.model.Project;
 import com.gures.nspdelivery.model.Server;
 import com.gures.nspdelivery.repository.ServerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ServerService {
@@ -28,4 +28,6 @@ public class ServerService {
     public void removeServerById(int id) {
         serverRepository.deleteById(id);
     }
+
+    public List<Server> findServersByProjectId(int id) { return serverRepository.findByProjectId(id); }
 }

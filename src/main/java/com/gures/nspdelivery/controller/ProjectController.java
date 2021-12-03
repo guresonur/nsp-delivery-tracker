@@ -43,4 +43,10 @@ public class ProjectController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
+    @GetMapping(value = "/projectsCustomer/{id}", produces = "application/json")
+    public ResponseEntity<List<Project>> getProjectsByCustomerId (@PathVariable int id) {
+        List<Project> projects = projectService.findProjectsByCustomerId(id);
+        return new ResponseEntity<>(projects, HttpStatus.OK);
+    }
+
 }

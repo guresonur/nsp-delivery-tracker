@@ -30,5 +30,5 @@ public class ProjectService {
         projectRepository.deleteById(id);
     }
 
-
+    public List<Project> findProjectsByCustomerId(int id) { return projectRepository.findByCustomerId(id); }
 }
